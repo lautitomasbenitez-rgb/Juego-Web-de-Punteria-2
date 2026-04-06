@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(73, 73, 73);
+    font-family: 'segoeUI';
+}
+
+#pantalla{
+    width: 100vw;
+    height: 100vh;
+    cursor: crosshair;
+}
+
+#contador{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+#objetivo{
+    background-image: url(./galeria/objetivo.png);
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    position: absolute;
+    transition: 0.1;
+}
