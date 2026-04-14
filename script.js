@@ -7,7 +7,6 @@ let puntos = 0;
 let vidas = 3;
 
 function mover() {
-  
     const x = Math.floor(Math.random() * (pantalla.offsetWidth - 100));
     const y = Math.floor(Math.random() * (pantalla.offsetHeight - 100));
 
@@ -15,44 +14,30 @@ function mover() {
     objetivo.style.top = y + "px";
 }
 
-
-function mover() {
-    const x = Math.floor(Math.random() * (pantalla.offsetWidth - 100));
-    const y = Math.floor(Math.random() * (pantalla.offsetHeight - 100));
-
-    objetivo.style.left = x + "px";
-    objetivo.style.top = y + "px";
-}
-
+// mover cada 1 segundo
 setInterval(mover, 1000);
 
-objetivo.addEventListener('click', function(e){
- 
-    e.stopPropagation();
-
-    puntos = puntos + 1;
-
-    textopuntos.innerText = puntos; 
-
-    mover();
-});
-
-
+// click en objetivo (sumar puntos)
 objetivo.addEventListener('click', function(e){
     e.stopPropagation();
 
-    puntos = puntos + 1;
+    puntos++;
     textopuntos.innerText = puntos;
 
-
     mover();
 });
 
+// click fuera (perder vida)
 pantalla.addEventListener('click', function(){
 
-    vidas = vidas -1;
-
+    vidas--;
     textovidas.innerText = vidas;
+
+    pantalla.classList.add('dano');
+
+    setTimeout(() => {
+        pantalla.classList.remove('dano');
+    }, 200);
 
     if(vidas <= 0) {
         alert("perdiste");
